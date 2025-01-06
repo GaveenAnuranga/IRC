@@ -1,0 +1,137 @@
+{% extends "base.html"%} 
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<style>
+    .navbar {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: white;
+        padding: 10px 0;
+        text-align: center;
+        z-index: 1000;
+    }
+    body {
+        background-image: url('https://wallpapercave.com/wp/wp2298412.png');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .home-container {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 50px;
+        border-radius: 20px;
+        max-width: 2600px;
+        width: 60%;
+        height: 30%;
+        text-align: center;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        margin: auto;
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .image-container {
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 50px;
+        border-radius: 20px;
+        max-width: 2600px;
+        width: 60%;
+        height: auto;
+        text-align: center;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+        margin: auto;
+        position: absolute;
+        top: 90%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        overflow: hidden;
+    }
+    .image-container img {
+        width: 100%;
+        height: auto;
+        border-radius: 20px;
+        transition: transform 1s ease-in-out, opacity 1s ease-in-out;
+    }
+    .image-container img.slide-out {
+        transform: translateX(-50%);
+        opacity: 0;
+    }
+    .image-container img.slide-in {
+        transform: translateX(50%);
+        opacity: 0;
+    }
+    h1 {
+        font-family: "Arial", sans-serif;
+        color: #800000;
+        font-size: 36px;
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+    p {
+        font-family: "Arial", sans-serif;
+        color: #333;
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+    .btn-primary {
+        background-color: #800000;
+        color: white;
+        border: none;
+        padding: 12px 25px;
+        font-size: 18px;
+        border-radius: 10px;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    .btn-primary:hover {
+        background-color: #660000;
+    }
+</style>
+
+<div class="image-container">
+    <img id="changing-image" src="https://www.unicef.org.uk/babyfriendly/wp-content/uploads/sites/2/2022/03/2000x1000-Conference-2016-1500x750-1.jpg" alt="Changing Image" style="width: 100%; border-radius: 20px;">
+    <p>Enjoy our rotating images showcasing our features!</p>
+</div>
+
+<div class="home-container">
+    <h1>Welcome to Our Website</h1>
+    <p>Discover amazing features and join our community. Whether you're here to sign up or log in, we've got you covered!</p>
+    <a href="/sign-up" class="btn-primary">Sign Up</a>
+    <a href="/login" class="btn-primary" style="margin-left: 15px;">Log In</a>
+</div>
+
+<script>
+    const images = [
+        'https://th.bing.com/th/id/OIP.XgvMkBFm0P-FvN1tZMvJUwHaEM?w=2120&h=1200&rs=1&pid=ImgDetMain',
+        'https://photour.net/wp-content/uploads/2014/04/_V7Q5255.jpg',
+        'https://www.autoneum.com/wp-content/uploads/2017/09/teaser_2803-800x391.jpg'
+    ];
+    let currentIndex = 0;
+    const imageElement = document.getElementById('changing-image');
+
+    function changeImage() {
+        imageElement.classList.add('slide-out');
+        setTimeout(() => {
+            currentIndex = (currentIndex + 1) % images.length;
+            imageElement.src = images[currentIndex];
+            imageElement.classList.remove('slide-out');
+            imageElement.classList.add('slide-in');
+            setTimeout(() => {
+                imageElement.classList.remove('slide-in');
+            }, 1000);
+        }, 1000);
+    }
+
+    setInterval(changeImage, 10000); // Change image every 3 seconds
+</script>
+
+{% endblock %}

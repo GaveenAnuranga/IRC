@@ -1,0 +1,85 @@
+{% extends "base.html" %} 
+{% block title %}Sign-Up{% endblock %} 
+{% block content %}
+
+<style>
+    body {
+        background-image: url('https://wallpapercave.com/wp/wp2298412.png');
+        background-size: 100% 100%; /* Stretch the background image to cover the entire screen */
+        background-position: center;
+        background-attachment: fixed; /* Keeps the background fixed during scrolling */
+        margin: 10px;
+        height: 100vh; /* Ensure the body takes up the full viewport height */
+    }
+    .signup-container {
+        background-color: rgba(240, 235, 235, 0.541); /* White background with transparency */
+        padding: 40px;
+        border-radius: 15px;
+        max-width: 400px;
+        margin: auto;
+        margin-top: 100px;
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.616); /* Subtle shadow for better contrast */
+    }
+    h3 {
+        font-family: "Arial", sans-serif;
+        color: #800000; /* Maroon */
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    .form-control {
+        background-color: #f4f4f4; /* Light gray background */
+        border: 1px solid #800000; /* Maroon border */
+        color: #800000; /* Maroon text color */
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+        margin-bottom: 15px;
+        transition: border-color 0.3s ease, background-color 0.3s ease;
+    }
+    .form-control:focus {
+        border-color: #660000; /* Darker maroon on focus */
+        background-color: #fff; /* White background on focus */
+    }
+    .btn-primary {
+        background-color: #800000; /* Maroon */
+        border: none;
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    .btn-primary:hover {
+        background-color: #660000; /* Darker maroon on hover */
+    }
+</style>
+
+<div class="signup-container">
+    <form method="POST">
+        <h3>Sign Up</h3>
+        <div class="form-group">
+            <label for="email" style="color: #050000;">Email Address</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+        </div>
+        <div class="form-group">
+            <label for="fname" style="color: #050000;">First Name</label>
+            <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first name">
+        </div>
+        <div class="form-group">
+            <label for="lname" style="color: #050000;">Last Name</label>
+            <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter last name">
+        </div>
+        <div class="form-group">
+            <label for="pw1" style="color: #050000;">Password</label>
+            <input type="password" class="form-control" id="pw1" name="pw1" placeholder="Enter password">
+        </div>
+        <div class="form-group">
+            <label for="pw2" style="color: #050000;">Confirm Password</label>
+            <input type="password" class="form-control" id="pw2" name="pw2" placeholder="Confirm password">
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
+    </form>
+</div>
+
+{% endblock %}
